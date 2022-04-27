@@ -2,7 +2,13 @@
 
 name: test workflow
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      tensorflow-alpa-branch-name:
+        description: 'TensorFlow-alpa branch to test'
+        required: true
+        default: 'master'
 
 jobs:
   test_job:
@@ -10,4 +16,8 @@ jobs:
 
     steps:
       - run: |
-          echo "Test Run"
+          echo "TensorFlow Alpa branch: ${TF_BRANCH}"
+          echo "Alpa branch: $ALPA_BRANCH"
+      - env:
+          TF_BRANCH: ${{ github.event.inputs.tensorflow-alpa-branch-name }}
+          ALPA_BRANCH: ${{github.ref}}
