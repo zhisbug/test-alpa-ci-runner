@@ -16,8 +16,8 @@ jobs:
 
     steps:
       - run: |
-          echo "TensorFlow Alpa branch: ${TF_BRANCH}"
-          echo "Alpa branch: $ALPA_BRANCH"
+          echo "TensorFlow-alpa branch: ${TF_BRANCH}"
+          echo "Alpa branch: ${ALPA_BRANCH##*/}"
         env:
           TF_BRANCH: ${{ github.event.inputs.tensorflow-alpa-branch-name }}
           ALPA_BRANCH: ${{github.ref}}
